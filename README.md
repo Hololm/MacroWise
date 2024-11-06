@@ -9,7 +9,7 @@ For backend, in the backend directory, run:
 
 Then, cd to fastapi and run:
 
-```fastapi dev main.py```
+```uvicorn main:app --reload```
 
 For frontend, in the frontend directory, run:
 
