@@ -2,7 +2,7 @@
 import { ref, onMounted } from 'vue'
 import axios from 'axios'
 
-const message = ref('not loaded yet...') // sets the message to not loaded yet while waiting for the response
+const message = ref('not loaded yet..a.') // sets the message to not loaded yet while waiting for the response
 
 onMounted(async () => { // when the component is mounted
   try {
