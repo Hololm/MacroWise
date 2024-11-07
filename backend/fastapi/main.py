@@ -14,6 +14,10 @@ app.add_middleware(
 @app.get("/") # tells FastAPI that this function is called when the user goes to the path /
 async def root():
     print("hello world")
-    return {"message": "this message is being sent from backend to frontend :)"} # return content as json
+    return {"message": {
+        "message_1": "Hello World",
+        "message_2": "nikhil nugra"
+        }
+    } # return content as json
 
 print("Hello World")
