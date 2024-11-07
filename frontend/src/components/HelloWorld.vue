@@ -8,6 +8,7 @@ onMounted(async () => { // when the component is mounted
   try {
     const response = await axios.get('http://localhost:8000/') // gets data from fastapi port 8000
     message.value = response.data.message // sets the message to the response data
+
   } catch (error) {
     console.error(error)
   }
