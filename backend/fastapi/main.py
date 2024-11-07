@@ -15,3 +15,5 @@ app.add_middleware(
 async def root():
     print("hello world")
     return {"message": "this message is being sent from backend to frontend :)"} # return content as json
+
+print("Hello World")
