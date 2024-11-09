@@ -17,7 +17,8 @@ app.add_middleware(
 
 # request validation
 class UserInput(BaseModel):
-    name: str
+    first: str
+    last: str
     height: int
     weight: int
     age: int
@@ -28,7 +29,8 @@ class UserInput(BaseModel):
 async def calculate_bmi(user_input: UserInput):
     # Create User instance
     user = User(
-        name = user_input.name,
+        first = user_input.first,
+        last = user_input.last,
         height = user_input.height,
         weight = user_input.weight,
         age = user_input.age,
@@ -40,7 +42,7 @@ async def calculate_bmi(user_input: UserInput):
     user.calculate_body_fat_percentage()
 
     return {
-        "name": user.name if user.name else None,
+        "name": f"{user.first} {user.last}",
         "bmi": round(user.bmi, 1) if user.bmi else None,
         "body_fat_percentage": round(user.body_fat_percentage, 2) if user.body_fat_percentage else None
         }
@@ -52,5 +54,6 @@ async def root():
         "message": {
         "message_1": "Hello World",
         "message_2": "nikhil nugra"
-    }
+    },
+        "message_2": "Hello World"
     }

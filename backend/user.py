@@ -2,9 +2,10 @@ class User:
     """User class keeps track of the user's body metrics (weight, bmi,
     etc.)."""
 
-    def __init__(self, name: str, height: int, weight: int, age: int, gender: str) -> None:
+    def __init__(self, first: str, last: str, height: int, weight: int, age: int, gender: str) -> None:
         """Initializes user object's with basic information."""
-        self.name = name
+        self.first = first
+        self.last = last
         self.height = height # height in inches (in.)
         self.weight = weight # weight in pounds (lbs)
         self.age = age
