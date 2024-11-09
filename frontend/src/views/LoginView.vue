@@ -25,7 +25,7 @@ async function calculateBMI() {
 </script>
 
 <template>
-  <div class="m-auto max-w-screen-sm p-2">
+  <div class="m-auto max-w-screen-sm">
     <form @submit.prevent="calculateBMI" class="form">
       <div class="form-group">
         <label for="name">Name:</label>
