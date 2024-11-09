@@ -13,14 +13,25 @@ class User:
         self.body_fat_percentage = None
 
     def calculate_bmi(self):
+        """Calculates the user's BMI (Body Mass Index)."""
+
         try:
             self.bmi = (self.weight * 703) / (self.height ** 2)
         except ZeroDivisionError:
             print("Invalid height.")
 
     def calculate_body_fat_percentage(self):
+        """Calculates the user's body fat percentage. This calculation,
+        though, is not as accurate as real body fat percentage tests. It is
+        only an estimate."""
+
         if self.bmi:
-            body_fat_percentage = (1.20 * self.bmi) + (0.23 * self.age) - 16.2
+            calc = (1.20 * self.bmi) + (0.23 * self.age)
+            if self.gender == "Male":
+                self.body_fat_percentage = calc - 16.2
+            elif self.gender == "Female":
+                self.body_fat_percentage = calc - 5.4
+
         else:
             print("BMI must be calculated.")
 

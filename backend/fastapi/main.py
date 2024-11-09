@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-
+from backend.user import User
 app = FastAPI()
 
 # Add CORS middleware to allow requests from the frontend
