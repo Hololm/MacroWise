@@ -76,11 +76,17 @@ async function calculateBMI() {
 </script>
 
 <template>
+  <div class="page-container">
+  <div class="image-side"></div>
+  <div class="divider"></div>
+  <div class="content-side">
   <div class="card-container">
     <div class="card">
-      <p class="text-4xl text-left pb-2">Let's Get Aligned With Your Goals</p>
-      <p class="text-2xl text-left mb-6">It won't take more than a couple of seconds.</p>
+      <div class="header-container">
+      <p class="text-4xl text-center pb-2">Welcome to MacroWise</p>
+      <p class="text-xl text-center mb-6">Just a few more details and you're set.</p>
       <div class="border-b mb-8"></div>
+      </div>
       <form @submit.prevent="calculateBMI" class="form">
         <div class="input-row">
           <div class="form-group">
@@ -103,31 +109,32 @@ async function calculateBMI() {
               type="text"
               class="border-2"
             >
-            <span class="error-text" :class="{ 'error-visible': errors.first }">
-      {{ errors.first || 'placeholder' }}
+            <span class="error-text" :class="{ 'error-visible': errors.last }">
+      {{ errors.last || 'placeholder' }}
     </span>
           </div>
         </div>
 
         <div class="input-row">
           <div class="form-group">
-            <label for="height">Height (inches)</label>
+            <label for="height">Height (in.)</label>
             <input
               id="height"
               v-model.number="formData.height"
               type="number"
             >
-            <span class="error-text" v-if="errors.height">{{ errors.height }}</span>
+                        <span class="error-text" :class="{ 'error-visible': errors.height }">
+      {{ errors.height || 'placeholder' }}</span>
           </div>
           <div class="form-group">
-            <label for="weight">Weight (lbs)</label>
+            <label for="weight">Weight (lbs.)</label>
             <input
               id="weight"
               v-model.number="formData.weight"
               type="number"
             >
-            <span class="error-text" :class="{ 'error-visible': errors.first }">
-      {{ errors.first || 'placeholder' }}
+            <span class="error-text" :class="{ 'error-visible': errors.weight }">
+      {{ errors.weight || 'placeholder' }}
     </span>
           </div>
         </div>
@@ -140,8 +147,8 @@ async function calculateBMI() {
               v-model.number="formData.age"
               type="number"
             >
-            <span class="error-text" :class="{ 'error-visible': errors.first }">
-      {{ errors.first || 'placeholder' }}
+            <span class="error-text" :class="{ 'error-visible': errors.age }">
+      {{ errors.age || 'placeholder' }}
     </span>
           </div>
           <div class="form-group">
@@ -150,8 +157,8 @@ async function calculateBMI() {
               <option value="Male">Male</option>
               <option value="Female">Female</option>
             </select>
-            <span class="error-text" :class="{ 'error-visible': errors.first }">
-      {{ errors.first || 'placeholder' }}
+            <span class="error-text" :class="{ 'error-visible': errors.gender }">
+      {{ errors.gender || 'placeholder' }}
     </span>
           </div>
         </div>
@@ -160,24 +167,53 @@ async function calculateBMI() {
       </form>
     </div>
   </div>
+  </div>
+  </div>
 </template>
 
 <style scoped>
+
 .card-container {
+}
+
+.header-container {
+  font-family: "Gilroy Bold", sans-serif;
+  color: #191753FF;
+}
+
+.page-container {
+  display: flex;
+  min-height: 100vh;
+  width: 100%;
+  background-color: #f8f8f8;
+}
+
+.image-side {
+  flex: 0.76;
+  background: url('https://d327mhnbii227g.cloudfront.net/images/left-banner.jpg') no-repeat center center;
+  background-size: cover;
+}
+
+.divider {
+  width: 2px;
+  height: 100vh;
+}
+
+.content-side {
+  flex: 1;
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 100vh;
-  padding: clamp(1rem, 5vw, 2rem);
+  padding: 2rem;
 }
 
 .card {
   width: 100%;
-  max-width: clamp(300px, 90%, 600px);
+  max-width: 900px;
   background: #ffffff;
   padding: clamp(1rem, 3vw, 2rem);
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 16px;
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.03);
 }
 
 .form {
@@ -193,6 +229,7 @@ async function calculateBMI() {
 .input-row {
   display: flex;
   gap: 1rem;
+  font-family: "Gilroy Medium", sans-serif;
 }
 
 .error-text {
@@ -202,6 +239,7 @@ async function calculateBMI() {
   visibility: hidden;
   height: 1rem;
   display: block;
+  font-family: "Gilroy Regular", sans-serif;
 }
 
 .error-visible {
@@ -224,28 +262,36 @@ select {
 input, select {
   padding: 0.5rem;
   border: none;
-  border-bottom: #5d1cda 2px solid;
+  border-bottom: #325694 2px solid;
   width: 100%;
-  background-color: #fafafa;
+  background-color: #fcfcfc;
 }
 
 input:hover, select:hover {
-  border-bottom: #a783f1 2px solid;
+  border-bottom: #7393B3 2px solid;
+}
+
+input:focus, select:focus {
+  outline: none;
 }
 
 button {
   padding: 8px 16px;
   color: #ffffff;
-  background-color: #5d1cda;
+  background-color: #5b9de1;
   border: 2px solid #f3f4f6;
   border-radius: 16px;
   cursor: pointer;
   margin-top: 1rem;
   box-shadow: 0 3px 5px rgba(0, 0, 0, 0.03);
   max-width: 100px;
+  font-family: "Gilroy Bold", sans-serif;
+  transition: all 0.15s ease;
 }
 
 button:hover {
+  background-color: #325694;
+  transition: background-color 0.15s ease;
 }
 
 input::-webkit-outer-spin-button,
