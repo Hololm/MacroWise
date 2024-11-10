@@ -23,7 +23,8 @@ class UserInput(BaseModel):
     weight: int
     age: int
     gender: str
-
+    activity_level: str
+    goal: str
 
 @app.post("/login") # register/login
 async def calculate_bmi(user_input: UserInput):
@@ -34,8 +35,12 @@ async def calculate_bmi(user_input: UserInput):
         height = user_input.height,
         weight = user_input.weight,
         age = user_input.age,
-        gender = user_input.gender
+        gender = user_input.gender,
+        activity_level = user_input.activity_level,
+        goal = user_input.goal
     )
+
+    # Create UserMacros instance
 
     # Calculate BMI and body fat percentage
     user.calculate_bmi()
