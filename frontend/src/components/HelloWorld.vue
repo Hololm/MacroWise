@@ -2,12 +2,12 @@
 import { ref, onMounted } from 'vue'
 import axios from 'axios'
 
-const message = ref('not loaded yet..a.') // sets the message to not loaded yet while waiting for the response
-const message_2 = ref('ok')
+const message = ref('') // sets the message to not loaded yet while waiting for the response
+const message_2 = ref('')
 
 onMounted(async () => { // when the component is mounted
   try {
-    const response = await axios.get('http://localhost:8000/') // gets data from fastapi port 8000
+    const response = await axios.get('http://localhost:8000/home') // gets data from fastapi port 8000
     message.value = response.data.message['message_1'] // sets the message to the response data
     message_2.value = response.data.message['message_2']
 

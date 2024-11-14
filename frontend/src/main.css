@@ -1,3 +1,33 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+:root {
+  --primary: #7393B3;
+  --secondary: #325694;
+  --accent: #088F8F;
+  --background: #CFCFC3;
+  --text: #B0A8A7;
+  --highlight: #ADD8E6;
+}
+
+@font-face {
+  font-family: 'Gilroy Bold';
+  src: url('@/components/fonts/gilroy-bold.ttf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Gilroy Regular';
+  src: url('@/components/fonts/gilroy-regular.ttf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Gilroy Medium';
+  src: url('@/components/fonts/gilroy-medium.ttf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
